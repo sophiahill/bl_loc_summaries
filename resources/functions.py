@@ -1,10 +1,12 @@
+import pandas as pd
+from functools import reduce
 from time import sleep
 import random
 from tqdm import tqdm
 tqdm.pandas()
-from os import chdir, getcwd
-wd = getcwd()  # lets you navigate using chdir within jupyter/spyder
-chdir(wd)
+import os
+wd = os.getcwd()  # lets you navigate using chdir within jupyter/spyder
+os.chdir(wd)
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 from progressbar import ProgressBar
@@ -91,3 +93,24 @@ def try_find_else_empty(bot, path_in, single_multi, href_text_other):
         returned = get_results(output, href_text_other)
 
         return returned
+    
+# returns merged dataframe
+def merge_outputs():
+    # set directory to where this file is located
+    folder_loc = os.path.dirname(os.path.realpath(__file__))
+    os.chdir(folder_loc + "/outputs") # in outputs folder
+    
+    # get files, turn into list of dataframes
+    files = os.listdir()
+    dfs = list(map(pd.read_csv, files))
+    # convert all columns to type string -> avoid ValueError
+    dfs = [df.astype(str) for df in dfs]
+    
+    # use reduce to apply merge to all dataframes
+    large = reduce(lambda left, right: pd.merge(left, right, how = "outer"), dfs)
+    # replace nan with empty string
+    large_df = large.replace("nan", "", regex = True)
+    # drop any duplicates
+    final_df = large_df.drop_duplicates()
+    
+    return(final_df)

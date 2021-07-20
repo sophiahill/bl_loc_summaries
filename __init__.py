@@ -18,8 +18,9 @@ os.chdir(wd)
 from progressbar import ProgressBar
 pbar = ProgressBar()
 from multiprocessing import Process
+from functools import reduce
 
-from set_parameters import *
+from set_parameters import set_params
 from resources.xpaths import *
 from resources.functions import hasXpath, sleep_for, sub_filter, get_result, get_results, try_find_else_empty
 
@@ -341,3 +342,5 @@ def run_scraper():
 
     for i in range(1, num_scrapers):
         scrapers[name].join()
+        
+# can call merge_outputs after this
