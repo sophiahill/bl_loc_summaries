@@ -60,7 +60,7 @@ import bl_loc_summaries as bl
 if __name__ == "__main__":
 	f = "C:/a_folder_location/test_locations.csv"
 	bl.run_scraper(input_path = f, name_col = "Name", 
-        	address_col = "Address")
+        		address_col = "Address")
 ```
 
 The scraper should be run in an ```if __name__ == "__main__"``` to avoid multiprocessing 
