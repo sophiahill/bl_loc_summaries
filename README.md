@@ -26,13 +26,13 @@ are added one-by-one to the generated ```outputs``` folder.
 
 Parameters:
 
-* input_path: String, the path to a CSV file of locations.
+* input_path: String, the path to a CSV file of locations
 
-* name_col: String, the name of the column of location names.
+* name_col: String, the name of the column of location names
 
-* address_col: String, the name of the column of location addresses.
+* address_col: String, the name of the column of location addresses
 
-* scrapers: Int, the number of scrapers to use, [1-18] allowed. 
+* scrapers: Int, the number of scrapers to use, [1-18] allowed
 
 * window: Bool, if True - chrome bot pop up window appears
 
