@@ -37,6 +37,7 @@ Parameters:
 * window: Bool, if True - chrome bot pop up window appears
 
 
+
 2. **merge_outputs**
 ```python
 bl_loc_summaries.merge_outputs(input_path)
