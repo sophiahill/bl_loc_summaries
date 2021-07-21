@@ -2,7 +2,7 @@
  
 main runs the scraper - run this file in terminal
 
-set_parameters contains the function set_params
+set_parameters contains all the parameters for main - edit them directly in this file
 
 merge_dfs merges all of the csvs that are sent to outputs (final csv called 'MERGED.csv')
 
